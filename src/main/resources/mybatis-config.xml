@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--  全局配置  -->
+        <!--  配置缓存可用  -->
+        <setting name="cacheEnabled" value="true"/>
+        <!--    控制台输出    -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <typeAliases>
+        <!--    别名配置    -->
+        <!--    2.对一个包下所属的类统一配置别名    -->
+        <package name="com.demo.entity"/>
+    </typeAliases>
+    <environments default="development">
+        <!--    数据库环境配置    -->
+        <environment id="development">
+            <!--     配置事务管理器类型       -->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://127.0.0.1:3306/SSM-demo?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="password"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--  配置SQL Mapper配置文件的位置  -->
+    <mappers>
+        <mapper resource="mapper/PersonMapper.xml"/>
+    </mappers>
+</configuration>
